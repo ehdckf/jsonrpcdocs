@@ -13,7 +13,9 @@ const getBase64 = (file: RcFile): Promise<string> =>
         });
 
 export const FileInput = (props: { keyArr: string[]; value: Record<string, any>; optional?: boolean }) => {
-        const { keyArr, value, optional } = props;
+        const { keyArr, value } = props;
+        const optional  =  props.optional || ((props.value?.optional as undefined|boolean) ?? true)
+        
         const maxLength = value?.maxLength?.value ?? Infinity;
         const [previewOpen, setPreviewOpen] = React.useState(false);
         const [previewImage, setPreviewImage] = React.useState("");
@@ -47,7 +49,7 @@ export const FileInput = (props: { keyArr: string[]; value: Record<string, any>;
                                 key={paramKey}
                                 label={paramKey}
                                 name={paramKey}
-                                rules={[{ required: value?.optional ?? optional ?? false }]}
+                                rules={[{ required: optional }]}
                         >
                                 <Upload
                                         // action="https://www.mocky.io/v2/5cc8019d300000980a055e76" 업로드 URL

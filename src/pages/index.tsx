@@ -1,4 +1,4 @@
-import { Item } from "@/component/Item";
+import { Method } from "@/component/Method";
 import { Badge, Button } from "antd";
 import { Collapse } from "antd";
 import { JSX } from "react";
@@ -568,7 +568,7 @@ const data = [
 const render = (datas: any[]) => {
         const result: JSX.Element[] = [];
         datas.forEach((data, key) => {
-                result.push(<Item key={Math.random()} {...data}></Item>);
+                result.push(<Method key={Math.random()} {...data}></Method>);
         });
         return result;
 };

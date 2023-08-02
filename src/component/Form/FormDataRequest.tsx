@@ -80,7 +80,7 @@ export const FormDataReqeust = (props: ItemProps) => {
                         >
                                 <Input readOnly={true} />
                         </Form.Item>,
-                        <Params key={props.name + ": parmas"} keyArr={[]} value={props.shape} optional={false} />,
+                        <Params key={props.name + ": parmas"} keyArr={[]} value={props.shape} optional={true} />,
                 ];
                 return result;
         };

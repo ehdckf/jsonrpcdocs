@@ -1,7 +1,7 @@
 import { Badge, Collapse, Typography, Tabs, Descriptions, Divider, TabsProps, CollapseProps } from "antd";
 import { JsonRequest } from "./JsonRequest";
-import { FormDataReqeust } from "./Form/FormData";
-import { ParamsTree } from "./Tree/ParamsTree";
+import { FormDataReqeust } from "./Form/FormDataRequest";
+import { ParamsTree } from "./Tree";
 
 type ItemProps = {
         key: number;
@@ -34,14 +34,14 @@ const paramsItemRender = (shape: Record<string, any>) => {
         });
 };
 
-export const Item = (props: ItemProps) => {
+export const Method = (props: ItemProps) => {
         const tabItemRender = (props: ItemProps): TabsProps["items"] => {
                 const items: TabsProps["items"] = [
                         {
                                 key: "1",
                                 label: "params",
-                                // children: <ParamsTree {...props} />,
-                                children: <></>,
+                                children: <ParamsTree shape={props.shape} />,
+                                // children: <></>,
                         },
                         {
                                 key: "5",

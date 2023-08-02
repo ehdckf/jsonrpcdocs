@@ -4,11 +4,11 @@ import { FileInput } from "./FileInput";
 import { NumberInput } from "./NumberInput";
 import { StringInput } from "./StringInput";
 
-export const Params = (props: { keyArr: string[]; value: Record<string, any>; optional?: boolean }) => {
-        const { keyArr, optional } = props;
+export const Params = (props: { keyArr: string[]; value: Record<string, any>; optional: boolean }) => {
+        const { keyArr } = props;
         return Object.entries(props.value).map((v, i) => {
                 const [key, value] = v;
-
+                const optional  =  props.optional || ((value?.optional as undefined|boolean) ?? true)
                 switch (value.type) {
                         case "string":
                                 return (
@@ -35,7 +35,7 @@ export const Params = (props: { keyArr: string[]; value: Record<string, any>; op
                                                 key={Math.random()}
                                                 keyArr={[...keyArr, key]}
                                                 value={value.schema}
-                                                optional={value.optional}
+                                                optional={optional}
                                         />
                                 );
 
@@ -89,7 +89,7 @@ export const Params = (props: { keyArr: string[]; value: Record<string, any>; op
                                                 key={Math.random()}
                                                 keyArr={[...keyArr, key]}
                                                 value={value}
-                                                optional={optional}
+                                                optional={optional ?? value.optional}
                                         />
                                 );
                         // result.push(renderEnum([...prefix, key], value, optional));
